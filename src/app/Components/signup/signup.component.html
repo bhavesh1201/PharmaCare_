@@ -1,0 +1,37 @@
+<div class="outer">
+  <div class="background  bodys">
+      <div class="shape"></div>
+      <div class="shape"></div>
+  </div>
+  <form [formGroup]="registerForm">
+      <h3>Signup Here !</h3>
+  
+  
+      <input  formControlName="username" type="text" placeholder="Email" id="username">
+      <small *ngIf="registerForm.controls['username'].dirty  && registerForm.hasError('required','username')" class="text-danger">*Username is required</small>
+  
+    
+      <input  formControlName="password" type="password" placeholder="Password" id="password">
+      <small *ngIf="registerForm.controls['password'].dirty  && registerForm.hasError('required','password')" class="text-danger">*Password is required</small>
+
+    
+      <input formControlName="name" type="text" placeholder="Name" id="Name">
+      <small *ngIf="registerForm.controls['name'].dirty  && registerForm.hasError('required','name')" class="text-danger">*Name is required</small>
+
+
+     
+      <input formControlName="age" type="Age" placeholder="Age" id="Name">
+      <small *ngIf="registerForm.controls['age'].dirty  && registerForm.hasError('required','age')" class="text-danger">*Age is required</small>
+
+
+      
+
+    
+  
+      <button class="btn btn-outline-dark" (click)="OnSubmit()" >Register</button>
+      <div class="social mt-2">
+        <div class="go me-2" > <a routerLink= "/login"> Back</a> </div>
+        <div class=""><a routerLink= "/signup">  SignUp</a></div>
+      </div>
+  </form>
+  </div>

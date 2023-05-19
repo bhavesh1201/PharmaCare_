@@ -1,0 +1,26 @@
+<div class="outer">
+<div class="background  bodys">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form [formGroup]="loginForm">
+    <h3>Login Here</h3>
+
+    <label for="username">Username</label>
+    <div [class.redBor]="loginForm.controls['username'].dirty  && loginForm.hasError('required','username')">
+      <input  formControlName="username"  type="text" placeholder="Email or Phone" id="username">
+
+    </div>
+    <small *ngIf="loginForm.controls['username'].dirty  && loginForm.hasError('required','username')" class="text-danger">*Username is required</small>
+
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" placeholder="Password" id="password">
+    <small *ngIf="loginForm.controls['password'].dirty  && loginForm.hasError('required','password')" class="text-danger">*Password is required</small>
+
+    <button  (click)="OnSubmit()" class="btn btn-outline-dark">Log In</button>
+    <div class="social mt-2">
+      <div class="go me-2">  Back</div>
+      <div class=""><a routerLink= "/signup">  SignUp</a></div>
+    </div>
+</form>
+</div>
