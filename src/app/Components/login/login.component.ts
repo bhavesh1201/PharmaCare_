@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import ValidateForm from 'src/app/helpers/validateform';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import ValidateForm from 'src/app/helpers/validateform';
 })
 export class LoginComponent  implements OnInit{
   
-constructor(private fb : FormBuilder){
+constructor(private fb : FormBuilder, private auth : AuthService , private route : Router){
 
 }
   loginForm :FormGroup;
@@ -26,7 +28,17 @@ constructor(private fb : FormBuilder){
   OnSubmit(){
     if(this.loginForm.valid){
       console.log("Form is valid");
-      console.log(this.loginForm.value);
+    this.auth.Login(this.loginForm.value)
+       .subscribe({
+        next :(res)=>{
+          alert(res.message)
+          this.loginForm.reset();
+           this.route.navigate(['dashboard']);
+        },
+        error : (err)=>{
+          alert(err.error.message)
+        }
+       })
       
     }
     else{

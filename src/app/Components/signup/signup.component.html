@@ -7,7 +7,7 @@
       <h3>Signup Here !</h3>
   
   
-      <input  formControlName="username" type="text" placeholder="Email" id="username">
+      <input  formControlName="username" type="text" placeholder="Username" id="username">
       <small *ngIf="registerForm.controls['username'].dirty  && registerForm.hasError('required','username')" class="text-danger">*Username is required</small>
   
     
@@ -18,9 +18,10 @@
       <input formControlName="name" type="text" placeholder="Name" id="Name">
       <small *ngIf="registerForm.controls['name'].dirty  && registerForm.hasError('required','name')" class="text-danger">*Name is required</small>
 
-
+      <input formControlName="email" type="email" placeholder="Email" id="email">
+      <small *ngIf="registerForm.controls['email'].dirty  && registerForm.hasError('required','email')" class="text-danger">*Email is required</small>
      
-      <input formControlName="age" type="Age" placeholder="Age" id="Name">
+      <input formControlName="age" type="Age" placeholder="Age" id="age">
       <small *ngIf="registerForm.controls['age'].dirty  && registerForm.hasError('required','age')" class="text-danger">*Age is required</small>
 
 

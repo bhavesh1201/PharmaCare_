@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import validateform from 'src/app/helpers/validateform';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   
@@ -11,7 +13,7 @@ import validateform from 'src/app/helpers/validateform';
 })
 export class SignupComponent  implements OnInit {
   registerForm : FormGroup;
-constructor(private fb : FormBuilder){
+constructor(private fb : FormBuilder , private auth : AuthService , private router : Router){
 
 }
 
@@ -20,7 +22,8 @@ constructor(private fb : FormBuilder){
       username :['',Validators.required],
       password :['',Validators.required],
       name :['',Validators.required],
-      age :['',Validators.required]
+      age :['',Validators.required],
+      email :['',Validators.required]
     })
     
   }
@@ -28,6 +31,26 @@ constructor(private fb : FormBuilder){
   OnSubmit(){
     if(this.registerForm.valid){
       console.log("Worked");
+
+      this.auth.SignUp(this.registerForm.value)
+        .subscribe({
+                next:(res=>{
+              console.log("idhar aya kia");
+                
+            alert(res.message);
+            this.registerForm.reset();
+             this.router.navigate(['login']);
+          })
+        ,error:(err=>{
+          alert("llmderf")
+          alert(err?.error.message)
+        })
+
+
+      })
+    
+      console.log(this.registerForm.value);
+      console.log("kam kia yha tak");
       
     }
     else {
