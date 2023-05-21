@@ -1,1 +1,11 @@
 <p>dashboard works!</p>
+<button  (click)="logout" clas="btn btn-primary ">Logout</button>
+
+
+
+<ul *ngFor ="let user of user">
+<li> {{user.username}}</li>
+
+</ul>
+
+<h1>Hwllo , {{fullName}}</h1>

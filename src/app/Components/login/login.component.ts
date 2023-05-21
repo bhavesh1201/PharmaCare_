@@ -1,8 +1,10 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import ValidateForm from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent  implements OnInit{
   
-constructor(private fb : FormBuilder, private auth : AuthService , private route : Router){
+constructor(private fb : FormBuilder, private auth : AuthService , 
+  private route : Router , private Toast : NgToastService , private userStore : UserStoreService){
 
 }
   loginForm :FormGroup;
@@ -31,7 +34,13 @@ constructor(private fb : FormBuilder, private auth : AuthService , private route
     this.auth.Login(this.loginForm.value)
        .subscribe({
         next :(res)=>{
-          alert(res.message)
+            
+          this.auth.storeToken(res.token);
+          let tokenPayload = this.auth.decodedToken()
+        this.userStore.setFullNameForStore(tokenPayload.unique_name);
+        this.userStore.setRoleForStore(tokenPayload.role);
+          this.Toast.success({detail:"Success", summary : res.message , duration:3500});
+          
           this.loginForm.reset();
            this.route.navigate(['dashboard']);
         },
@@ -42,9 +51,10 @@ constructor(private fb : FormBuilder, private auth : AuthService , private route
       
     }
     else{
-      console.log("Invalid form");
+
+      this.Toast.error({detail:"Error", summary :"Please Enter Id and Password" , duration:3500});
       ValidateForm.ValidateAllFormFeilds(this.loginForm);
-      alert("Invalid Form");
+      
       
     }
   }
