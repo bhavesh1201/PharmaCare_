@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row pt-4 pb-2 text-center">
+        <div class="col-6 text-primary">
+            <h2>Drug List</h2>
+
+        </div>
+        <div class="col-6 text-end">
+            <a  class="btn btn-primary" (click)="populateDrug(drugService.DrugData)" [routerLink]="['/drugEdit']">
+                <i class="bi bi-person-add"></i>Add Drug
+            </a>
+
+        </div>
+    </div>
+
+
+
+
+
+<table class="table table-bordered table-striped ">
+
+   
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Expiry Date</th>
+            <th class="text-center">Action</th>
+
+        </tr>
+       
+    
+        <tr *ngFor ="let p of drugService.listDrug">
+            <td> {{p.drugName}}</td>
+            <td> {{p.price}}</td>
+            <td>{{p.expiryDate |date: 'yyyy-MM-dd'}}</td>
+            <td >
+                <div class="w-75 btn-group m-1 " role="group">
+
+
+                    <a  class="btn btn-outline-primary ps-1" (click)="populateDrug(p)" [routerLink]="['/drugEdit']" routerLinkActive="router-link-active" >
+                            <i class="bi bi-pencil-square"></i>Edit
+                    </a>
+                        <a  (click)="DeleteDrug(p.id)" class="btn btn-outline-danger ms-4">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                </div>
+
+            </td>
+        </tr>
+
+
+    
+
+</table>
+</div>
+<app-footer></app-footer>

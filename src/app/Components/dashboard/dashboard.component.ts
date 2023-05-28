@@ -42,10 +42,16 @@ export class DashboardComponent implements OnInit {
    
 
   logout(){
-    this.route.navigate(['login']);
+    console.log("logout has been called")
+    this.route.navigate(['']);
     this.auth.Logout();
     
 
   }
+  
+           
+
+
+
 
 }

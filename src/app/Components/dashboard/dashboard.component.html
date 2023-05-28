@@ -1,11 +1,59 @@
-<p>dashboard works!</p>
-<button  (click)="logout" clas="btn btn-primary ">Logout</button>
+<app-header></app-header>
+<div class="outer">
+<div class="container-fluid ms-0 py-4 text-end pe-4 ">
+    <input type="submit" class="btn btn-dark" value="logout" (click)="logout()" />
+ <h3> Welcome Back , {{fullName}}</h3>
 
 
 
-<ul *ngFor ="let user of user">
-<li> {{user.username}}</li>
+ 
+ <table class="table table-striped p-3">
+    
+    <thead>
+       <h3 class="text-end">User Lists</h3>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <!-- <th scope="col"> Image</th> -->
+            <!-- <th scope="col">Action</th> -->
 
-</ul>
 
-<h1>Hwllo , {{fullName}}</h1>
+        </tr>
+      </thead>
+      
+
+    
+        
+      
+        <tr *ngFor ="let p of user">
+         <td>{{ p.name }}</td>
+         <td>{{p.username}}</td>
+         <td>{{p.age}}</td>
+         <td>{{p.email}}</td>
+         <td>{{p.role}} </td>
+        
+         <!-- <td>
+            <div class="w-75 btn-group m-1 " role="group"> -->
+
+
+                <!-- <a (click)="populateDrug(p)" href="#" class="btn btn-outline-primary ps-1">
+                        <i class="bi bi-pencil-square"></i>Edit
+                </a>
+                    <a (click)="DeleteDrug(p.id)" class="btn btn-outline-danger ms-4">
+                        <i class="bi bi-trash-fill"></i> Delete
+                    </a> -->
+            <!-- </div>
+
+        </td> -->
+        </tr> 
+   
+  
+
+      
+     
+</table>
+ 
+<app-footer></app-footer>

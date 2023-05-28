@@ -1,0 +1,69 @@
+
+<form class="p-3 m-3 frm" autocomplete="off" #drugForm="ngForm"  (ngSubmit)="drugForm.form.valid && submit(drugForm)" >
+
+
+    
+    <div class="border p-3 mt-2">
+        <div class="row pb-2">
+            <h2 *ngIf="DrugService.DrugData.id==null; else noCourses" class="text-primary text-center"  >
+            Add Drug
+            </h2> 
+           
+        </div>
+        <ng-template #noCourses>
+            <h2 class="text-center text-primary">Update Drug</h2>
+          </ng-template>
+
+        
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label> Drug Name</label>
+                
+                <input name="name" #name="ngModel" [(ngModel)]="DrugService.DrugData.drugName" type="text" class="form-control" />
+
+            </div>
+            <div class="col-6">
+            <label>Price</label>
+            <input name="price" #price="ngModel" [(ngModel)]="DrugService.DrugData.price" type="number" class="form-control" />
+        </div>
+        </div>
+
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label> Expiery Date</label>
+                <input name="exp" #exp="ngModel" [(ngModel)]="DrugService.DrugData.expiryDate" type="date" class="form-control" />
+            </div>
+
+            <div class="col-6">
+                <label> Manufacture Date</label>
+                <input type="date" name="mfg" #mfg="ngModel"  [(ngModel)]="DrugService.DrugData.dateCreated" class="form-control" />
+            </div>
+            
+           
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 ">
+
+                <input type="submit" class="btn btn-dark form-control" value="Update" />
+
+
+            </div>
+            <div class="col-6 ">
+                <button  type="reset" class="btn btn-outline-secondary form-control">
+                    Reset
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</form>

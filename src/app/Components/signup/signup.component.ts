@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgToastModule, NgToastService } from 'ng-angular-popup';
 import validateform from 'src/app/helpers/validateform';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   
@@ -14,6 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SignupComponent  implements OnInit {
   registerForm : FormGroup;
+  temp: string;
 constructor(private fb : FormBuilder , private auth : AuthService , private router : Router
   ,private Toast : NgToastService){
 
@@ -32,8 +34,6 @@ constructor(private fb : FormBuilder , private auth : AuthService , private rout
 
   OnSubmit(){
     if(this.registerForm.valid){
-      
-
       this.auth.SignUp(this.registerForm.value)
         .subscribe({
                 next:(res=>{
@@ -41,11 +41,19 @@ constructor(private fb : FormBuilder , private auth : AuthService , private rout
                   this.Toast.success({detail:"Success", summary : res.message , duration:3500});
             
             this.registerForm.reset();
+            console.log(res.status);
+            
              this.router.navigate(['login']);
           })
         ,error:(err=>{
-         
-          this.Toast.error({detail:"Error", summary :err?.error.message, duration:3500});
+          console.log(err);
+          
+          this.temp=err.error.message;
+      
+   
+     console.log(this.temp);
+        
+          this.Toast.error({detail:"Error", summary :this.temp, duration:3500});
           
         })
 
