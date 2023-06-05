@@ -1,0 +1,24 @@
+
+<app-header></app-header>
+
+<div class="container ">
+    <div class="row">
+        <ng-container *ngFor="let item of ListDrug" >
+            <div class= "card col-md-3 cld">
+                <img src=".\assets\userlog.jpg" alt="">
+                <h5 class="text-center"><strong>Drug Name:</strong> {{item.drugs.drugName}} </h5>
+                <h6 class="text-center"><strong>Supplier Name:</strong> {{item.suppilerName}}</h6>
+                <p class="text-center"><strong>Quntity:</strong> {{item.quntity}}</p>
+                <p class="text-center"><strong>Price:</strong> {{item.drugs.price}}₹</p>
+                <button class="btn btn-outline-primary" (click)=addtocart(item)>Add to cart</button>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+
+
+
+
+
+<app-footer></app-footer>

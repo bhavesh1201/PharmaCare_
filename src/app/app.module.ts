@@ -19,6 +19,11 @@ import { DatePipe } from '@angular/common';
 import { DrugFormsComponent } from './Components/drugs/drug-forms/drug-forms.component';
 import { SuppliersComponent } from './Components/suppliers/suppliers.component';
 import { Notfound404Component } from './Components/errors/notfound404/notfound404.component';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
+import { SupplierFormComponent } from './Components/suppliers/supplier-form/supplier-form.component';
+import { DashboardDctComponent } from './Components/DoctorUI/dashboard-dct/dashboard-dct.component';
+import { CartsComponent } from './Components/DoctorUI/carts/carts.component';
+import { ResponsesComponent } from './Components/responses/responses.component';
 
 
 
@@ -35,7 +40,11 @@ import { Notfound404Component } from './Components/errors/notfound404/notfound40
     DrugsComponent,
     DrugFormsComponent,
     SuppliersComponent,
-    Notfound404Component
+    Notfound404Component,
+    SupplierFormComponent,
+    DashboardDctComponent,
+    CartsComponent,
+    ResponsesComponent
   
     
   ],
@@ -46,7 +55,10 @@ import { Notfound404Component } from './Components/errors/notfound404/notfound40
     HttpClientModule,
     NgToastModule,
     FormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    MdbCheckboxModule
+    
+
    
   ],
   providers: [{

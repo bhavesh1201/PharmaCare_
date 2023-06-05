@@ -44,10 +44,20 @@ constructor(private fb : FormBuilder, private auth : AuthService ,
           this.Toast.success({detail:"Success", summary : res.message , duration:3500});
           
           this.loginForm.reset();
+          
+           
+          if(tokenPayload.role=="Doctor"){
+            this.route.navigate(['dasboardDct'])
+            console.log(tokenPayload.role);;
+          }
+          else{
+            
            this.route.navigate(['dashboard']);
+          }
         },
         error : (err)=>{
-          alert(err.error.message)
+          this.Toast.error({detail:"Error", summary :err.error.message , duration:3500});
+         
         }
        })
       

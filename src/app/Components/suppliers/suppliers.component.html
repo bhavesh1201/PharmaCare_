@@ -1,1 +1,49 @@
-<p>suppliers works!</p>
+<!-- <table>
+<tr>
+    <th>Name</th>
+</tr>
+<tr *ngFor="let z of ServiceSupl.listSupplier">
+  <td>{{z.drugs.drugName}}</td>
+</tr> -->
+
+<app-header></app-header>
+<div class="col-10">
+
+  <div class="col-6 text-end">
+    <a  class="btn btn-primary" (click)="populateSupplier(ServiceSupl.DataSupplier)" [routerLink]="['/supplierForm']">
+        <i class="bi bi-person-add"></i>Add Supplier
+    </a>
+
+</div>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Supplier Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Drug Name</th>
+      <th scope="col">Drug Quntity </th>
+      <th scope="col">Drug Price </th>
+      <th scople ="col"> Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let z of ServiceSupl.listSupplier">
+      
+      <td>{{z.suppilerName}}</td>
+      <td>{{z.email}}</td>
+      <td>{{z.drugs.drugName}}</td>
+      <td>{{z.quntity}}</td>
+      <td>{{z.drugs.price}}</td>
+      <td><button class="btn btn-primary" (click)="populateSupplier(z)"   [routerLink]="['/supplierForm']"> <i class="bi bi-pencil-square"></i>Edit</button> 
+        <button class="btn btn-danger" (click)="DeleteSupplier(z.suppilerId)" >  <i class="bi bi-trash-fill"></i> Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+<app-footer></app-footer>

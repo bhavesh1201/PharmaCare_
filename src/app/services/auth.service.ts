@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { NgToastComponent, NgToastService } from 'ng-angular-popup';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
   private userPayload : any;
 
   private baseUrl : string ="https://localhost:7004/api/User/";
-  constructor(private http : HttpClient , private route : Router ) {
+  constructor(private http : HttpClient , private route : Router , public toast : NgToastService ) {
     this.userPayload = this.decodedToken();
    }
 
@@ -27,6 +28,7 @@ export class AuthService {
 
   Logout(){
 localStorage.clear();
+this.toast.success({detail:"Success", summary : "You have been Logout" , duration:3500});
 this.route.navigate(['login'])
 
   }

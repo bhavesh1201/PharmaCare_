@@ -24,17 +24,29 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Operations</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item " href="#">Suppliers</a>
+              <a class="dropdown-item " [routerLink]="['/supplier']" >Suppliers</a>
               <a class="dropdown-item" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >Dashboard</a>
               <a class="dropdown-item" [routerLink]="['/drugs']" routerLinkActive="router-link-active" >Drugs</a>
+              <a class="dropdown-item" [routerLink]="['/respi']" routerLinkActive="router-link-active" >Responses</a>
               <a class="dropdown-item" href="#">Manage Orders</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Sales Report</a>
             </div>
           </li>
+
+          
         </ul>
         
-
+        <span [hidden]=hdn  class="nav-item">
+          <a (click)="logout()" class="nav-link text-white"><i class="bi bi-box-arrow-left"></i> Logout</a>
+        </span>
+        <a  routerLink="/cart" class="btn btn-outline-success mx-3">
+          <strong>
+            <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+          </strong>
+          <div style="font-size: 10px;" class="badge bg-danger">{{totalItem}}</div>
+        </a>
+       
       </div>
     </div>
   </nav>

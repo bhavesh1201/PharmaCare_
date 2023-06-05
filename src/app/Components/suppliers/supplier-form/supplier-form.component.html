@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div class="cont">
+
+
+
+<form class="p-3 m-3 frm" autocomplete="off" #supForm="ngForm"  (ngSubmit)="supForm.form.valid && submit(supForm)" >
+ <div>
+ 
+    
+   
+            <h2  class="text-primary text-center"  >
+            Add Supplier
+            </h2> 
+           
+        
+
+        
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label> Supplier  Name</label>
+                
+                <input name="name" #name="ngModel" [(ngModel)]="SupplierServic.DataSupplier.suppilerName" type="text" class="form-control" />
+
+            </div>
+            <div class="col-6">
+            <label>Supplier Email </label>
+            <input name="price" #price="ngModel" [(ngModel)]="SupplierServic.DataSupplier.email" type="text" class="form-control" />
+        </div>
+        </div>
+
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label> Quntity</label>
+                <input name="exp" #exp="ngModel" [(ngModel)]="SupplierServic.DataSupplier.quntity" type="number" class="form-control" />
+            </div>
+
+            <div class="col-6">
+                <label> Drug Id</label>
+                <input type="number" name="mfg" #mfg="ngModel"  [(ngModel)]="SupplierServic.DataSupplier.drugid" class="form-control" />
+            </div>
+            
+           
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 ">
+
+                <input type="submit" class="btn btn-dark form-control" value="Update" />
+
+
+            </div>
+            <div class="col-6 ">
+                <button  type="reset" class="btn btn-outline-secondary form-control">
+                    Reset
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</form>
+</div>
+<app-footer></app-footer>

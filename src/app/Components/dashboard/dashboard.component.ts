@@ -15,7 +15,8 @@ export class DashboardComponent implements OnInit {
   public role! : string
  fullName :string = ""
   public user : any =[]
-  constructor(private auth : AuthService , private api : ApiService,private route : Router , private userStore : UserStoreService){
+  constructor(private auth : AuthService , private api : ApiService,private route : Router ,
+     private userStore : UserStoreService){
 
   }
   ngOnInit(): void {

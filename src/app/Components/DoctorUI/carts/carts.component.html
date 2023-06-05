@@ -1,0 +1,76 @@
+<app-header></app-header>
+<ng-container *ngIf="products.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Drug Name</th>
+                           
+                            <th>Supplier Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products; let i = index">
+                            <td>{{i+1}}</td>
+                             <td>{{item.drugs.drugName}}</td>
+                            
+                            <td style="width: 25%;">{{item.suppilerName}}</td>
+                            <th style="width: 12%;">{{item.drugs.price}}</th>
+                            <td style="width: 12%;">{{item.quntity}}</td>
+                           
+                            <td>
+                                <button (click)="removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Remove</button>
+                             </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            
+                            <td><button (click)="emptycart()" class="btn btn-outline-danger row-md-3">Empty Cart</button></td>
+                            <td><button routerLink="/dasboardDct" class="btn btn-outline-primary row-md-3 ">Shop More</button></td>
+                            <td><button class="btn btn-success row-md-3">Checkout</button></td>
+                            <td><strong class="row-md-3">Grand Total : {{grandTotal}}₹</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="products.length ==0">
+    <div class="container-fluid  mt-100">
+        <div class="row">
+        
+           <div class="col-md-12">
+           
+                   <div class="card">
+               <div class="card-header">
+               <h5>Cart</h5>
+               </div>
+               <div class="card-body cart">
+                       <div class="col-sm-12 empty-cart-cls text-center">
+                           <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                           <h3><strong>Your Cart is Empty</strong></h3>
+                           <h4>Add something to make me happy :)</h4>
+                           <a routerLink="/dasboardDct" class="btn btn-primary cart-btn-transform m-3" data-abc="true">buy drugs</a>
+                           
+                       
+                       </div>
+               </div>
+       </div>
+               
+           
+           </div>
+        
+        </div>
+       
+       </div>
+</ng-container>
