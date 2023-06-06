@@ -1,4 +1,60 @@
 <app-header></app-header>
 
+<body>
+    <div class="container">
+        <h1 class="text-center">All Responses</h1>
+        <div id="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>photo</th>
+                        <th>phoneNumber</th>
+                        <th>response</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor ="let z of this.feedb.FeedbackList">
+                        <td>{{z.name}}</td>
+                        <td><a>
+                            <img src="\assets\man.png"></a></td>
+                        <td>{{z.phoneNumber}}</td>
+                        <td>{{z.meesage}}</td>
+                        <td>
+                            <a (click)="DeleteSupplier(z.id)" class="Remove">Remove</a>
+                        </td> 
+                    </tr>
+                   
+                </tbody>
+                
+            </table>
+        </div>
 
+    </div>
+        <div id="popup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <span class="close">&times;</span>
+                </div>
+                <div class="input-group">
+                    <label for="image">Link Image</label>
+                    <input type="text" id="image" name="image">
+                </div>
+                <div class="input-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="input-group">
+                    <label for="description">description</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <div class="btn-group">
+                    <a id="addTotable">Add To Table</a>
+                </div>
+                
+            </div>
+        </div>
+  
+</body>
 <app-footer></app-footer>

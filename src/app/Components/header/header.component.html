@@ -21,7 +21,7 @@
           
                
 
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="showAdminBoard">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">Operations</a>
             <div class="dropdown-menu">
               <a class="dropdown-item " [routerLink]="['/supplier']" >Suppliers</a>
@@ -36,11 +36,17 @@
 
           
         </ul>
+        <div class="cont  pe-1" *ngIf="isLoggedIn">
+         
+          <span class="text-white user"><i class="fa-solid fa-user-tie p-2"></i>{{this.currentUser | uppercase }}!</span>
+         </div>
         
-        <span [hidden]=hdn  class="nav-item">
-          <a (click)="logout()" class="nav-link text-white"><i class="bi bi-box-arrow-left"></i> Logout</a>
+        <span *ngIf="isLoggedIn"  class="nav-item ps-2 ms-1">
+          <a (click)="logout()" class="nav-link text-white btn btn-danger"><i class="bi bi-box-arrow-left"></i> Logout</a>
         </span>
-        <a  routerLink="/cart" class="btn btn-outline-success mx-3">
+        <a  *ngIf="!isLoggedIn" class="nav-link text-white ps-2 m-2 " routerLink="/login">Login</a>
+        <a  *ngIf="!isLoggedIn" class="nav-link text-white ps-2 m-2 " routerLink="/signup">Register</a>
+        <a *ngIf="showUserBoard" routerLink="/cart" class="btn btn-outline-success mx-3">
           <strong>
             <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
           </strong>

@@ -13,3 +13,42 @@
     /*Without this, clicking will make it sticky*/
       pointer-events: none;
   }
+  .height{
+    height: 20vh;
+   }
+   
+   .second-pg{
+    margin: 50px 250px;
+    letter-spacing: 2rem;
+  }
+
+  .cont img{
+    border-radius: 50%;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .home{
+    color: black;
+  }
+
+  .user{
+    font-size: 20px;
+  }
+
+
+
+  .link{ 
+    text-decoration: none;
+       }
+  
+  .text{
+    position: relative;
+      color: black;
+      font-weight: 700;
+      font-size: 1.1em;
+      
+     
+  }
