@@ -3,7 +3,7 @@
 
 <div class="container ">
     <div class="row">
-        <ng-container *ngFor="let item of ListDrug" >
+        <ng-container *ngFor="let item of ListDrug | paginate : { itemsPerPage: 6, currentPage: p }"  >
             <div class= "card col-md-3 cld">
                 <img src=".\assets\userlog.jpg" alt="">
                 <h5 class="text-center"><strong>Drug Name:</strong> {{item.drugs.drugName}} </h5>
@@ -13,6 +13,7 @@
                 <button class="btn btn-outline-primary" (click)=addtocart(item)>Add to cart</button>
             </div>
         </ng-container>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
     </div>
 </div>

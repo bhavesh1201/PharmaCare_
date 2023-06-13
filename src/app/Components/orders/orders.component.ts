@@ -1,38 +1,37 @@
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Drugs } from 'src/app/models/drug.model';
-import { DrugsService } from 'src/app/services/drugs.service';
+import { order } from 'src/app/models/order.model';
+import { OrderService } from 'src/app/services/order.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-drugs',
-  templateUrl: './drugs.component.html',
-  styleUrls: ['./drugs.component.css']
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css']
 })
-export class DrugsComponent implements OnInit {
- 
+export class OrdersComponent implements OnInit {
   p=1;
-  constructor(public drugService : DrugsService , private date : DatePipe ){
+  constructor(public orderServ : OrderService , private date : DatePipe ){
 
   }
 
   ngOnInit(): void {
-    this.drugService.GetDrug().subscribe(data=>{
-      this.drugService.listDrug=data;
+    this.orderServ.GetOrder().subscribe(data=>{
+      this.orderServ.listOrder=data;
+    
     });
     
   }
-  populateDrug(selectedDrug : Drugs){
+  populateDrug(selectedOrder : order){
   
-    let df = this.date.transform(selectedDrug.dateCreated,'yyyy-MM-dd');
-    selectedDrug.dateCreated = df;
-    let FF = this.date.transform(selectedDrug.expiryDate,'yyyy-MM-dd');
-    selectedDrug.expiryDate = FF;
+    let df = this.date.transform(selectedOrder.orderDate,'yyyy-MM-dd');
+    selectedOrder.orderDate = df;
+   
   
     console.log(df);
           
-      console.log(selectedDrug);
-      this.drugService.DrugData=selectedDrug;
+      console.log(selectedOrder);
+      this.orderServ.DataOrder=selectedOrder;
   
   
     }
@@ -51,10 +50,10 @@ export class DrugsComponent implements OnInit {
         }).then((result) => {
           if (result.isConfirmed) {
     
-            this.drugService.DeleteDrug(id).subscribe(data=>{
+            this.orderServ.DeleteOrder(id).subscribe(data=>{
               console.log("Drug has been removed");
-              this.drugService.GetDrug().subscribe(data=>{
-                this.drugService.listDrug=data;
+              this.orderServ.GetOrder().subscribe(data=>{
+                this.orderServ.listOrder=data;
               });
                
               

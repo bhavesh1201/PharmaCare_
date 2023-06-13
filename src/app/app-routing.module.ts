@@ -13,6 +13,9 @@ import { SupplierFormComponent } from './Components/suppliers/supplier-form/supp
 import { DashboardDctComponent } from './Components/DoctorUI/dashboard-dct/dashboard-dct.component';
 import { CartsComponent } from './Components/DoctorUI/carts/carts.component';
 import { ResponsesComponent } from './Components/responses/responses.component';
+import { OrdersComponent } from './Components/orders/orders.component';
+import { OrderFormComponent } from './Components/orders/order-form/order-form.component';
+import { OrderFormUserComponent } from './Components/DoctorUI/order-form-user/order-form-user.component';
 
 
 const routes: Routes = [
@@ -27,6 +30,9 @@ const routes: Routes = [
   {path :'dasboardDct' , component : DashboardDctComponent},
   {path :'cart' , component : CartsComponent},
   {path :'respi',component : ResponsesComponent},
+  {path :'order',component:OrdersComponent},
+  {path :'orderEdit' , component : OrderFormComponent},
+  {path :'orderFormUser' , component : OrderFormUserComponent},
   {path :"" ,component: HomeComponent}
   
   

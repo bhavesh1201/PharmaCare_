@@ -1,0 +1,68 @@
+<app-header></app-header>
+<p>orders works!</p>
+
+<div class="container">
+    <div class="row pt-4 pb-2 text-center">
+        <div class="col-6 text-primary">
+            <h2>List Of Orders</h2>
+
+        </div>
+        <!-- <div class="col-6 text-end">
+            <a  class="btn btn-primary" (click)="populateDrug(orderServ.DataOrder)" [routerLink]="['/drugEdit']">
+                <i class="bi bi-person-add"></i>z
+            </a>
+
+        </div> -->
+    </div>
+
+
+
+
+
+<table class="table table-bordered table-striped ">
+
+   
+        <tr>
+            <th>Name</th>
+            <th>Payment Mode</th>
+            <th>Address</th>
+            <th>Total Price</th>
+            <th>Order date</th>
+            <th>Is Approved</th>
+            <th class="text-center">Action</th>
+
+        </tr>
+       
+    
+        <tr *ngFor ="let p of orderServ.listOrder  |  paginate : { itemsPerPage: 5, currentPage: p }" [ngClass]="{'bgColrG':p.isApproved , 'bgColr' : !p.isApproved}" >
+            <td> {{p.userName}}</td>
+            <td> {{p.payment}}</td>
+            <td> {{p.address}}</td>
+            <td> {{p.totalPrice}}</td>
+           
+            <td>{{p.orderDate |date: 'yyyy-MM-dd'}}</td>
+            <td  >{{p.isApproved}}</td>
+            <td >
+                <div class="w-75 btn-group m-1 " role="group">
+
+
+                    <a  class="btn btn-outline-primary ps-1" (click)="populateDrug(p)" [routerLink]="['/orderEdit']" routerLinkActive="router-link-active" >
+                            <i class="bi bi-pencil-square"></i>Edit
+                    </a>
+                        <a  (click)="DeleteDrug(p.orderId)" class="btn btn-outline-danger ms-4">
+                            <i class="bi bi-trash-fill"></i> Delete
+                        </a>
+                </div>
+
+            </td>
+        </tr>
+
+
+    
+
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</div>
+
+<app-footer></app-footer>

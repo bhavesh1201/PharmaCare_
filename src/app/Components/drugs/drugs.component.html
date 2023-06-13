@@ -29,7 +29,7 @@
         </tr>
        
     
-        <tr *ngFor ="let p of drugService.listDrug">
+        <tr *ngFor ="let p of drugService.listDrug | paginate : { itemsPerPage: 8, currentPage: p }">
             <td> {{p.drugName}}</td>
             <td> {{p.price}}</td>
             <td>{{p.expiryDate |date: 'yyyy-MM-dd'}}</td>
@@ -52,5 +52,6 @@
     
 
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <app-footer></app-footer>

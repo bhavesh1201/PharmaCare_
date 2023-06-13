@@ -1,33 +1,35 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
 import { Drugs } from 'src/app/models/drug.model';
-import { DrugsService } from 'src/app/services/drugs.service';
+import { order } from 'src/app/models/order.model';
+import { OrderService } from 'src/app/services/order.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-drug-forms',
-  templateUrl: './drug-forms.component.html',
-  styleUrls: ['./drug-forms.component.css']
+  selector: 'app-order-form',
+  templateUrl: './order-form.component.html',
+  styleUrls: ['./order-form.component.css']
 })
-export class DrugFormsComponent  {
+export class OrderFormComponent {
+ 
+  tez: string;
 
 
-  tez:string =""
 
-  constructor(public DrugService : DrugsService , private route : Router , private toast : NgToastService ){
+
+  constructor(public orderServic : OrderService , public route : Router){
 
   }
-
+  
   submit(form:NgForm)
   {
     console.log("Kam");
 
-    if(this.DrugService.DrugData.id==0 || this.DrugService.DrugData.id==null)
+    if(this.orderServic.DataOrder.orderId==0 || this.orderServic.DataOrder.orderId==null)
     { 
       
-      this.tez='Add Drug'
+      
       this.insertForm(form);
       
      
@@ -41,11 +43,11 @@ export class DrugFormsComponent  {
   insertForm(from:NgForm){
  
     console.log("insert called");
-    this.DrugService.InsertDrug().subscribe(d=>{
+    this.orderServic.InsertOrder().subscribe(d=>{
       
       this.ResetForm(from);
       this.Refresh();
-      this.route.navigate(['drugs']);
+      this.route.navigate(['order']);
       Swal.fire('Added Successfully')
       console.log("Saved");
      
@@ -53,18 +55,11 @@ export class DrugFormsComponent  {
 
   }
 
-
-
-
-            
-
-
-
   UpdateForm(from:NgForm){
-    this.DrugService.UpdateDrug().subscribe(d=>{
+    this.orderServic.UpdateOrder().subscribe(d=>{
       this.ResetForm(from);
       this.Refresh();
-      this.route.navigate(['drugs']);
+      this.route.navigate(['order']);
      Swal.fire('Updated Successfully')
       //this.toast.success({detail:"Updated" , summary :"Drug has been updated"})
       console.log("Refresh & update done");
@@ -74,14 +69,15 @@ export class DrugFormsComponent  {
 
   ResetForm(from:NgForm){
     from.form.reset();
-    this.DrugService.DrugData= new Drugs();
+    this.orderServic.DataOrder= new order();
 
   }
 
   Refresh(){
-    this.DrugService.GetDrug().subscribe(res=>{
-      this.DrugService.listDrug = res;
+    this.orderServic.GetOrder().subscribe(res=>{
+      this.orderServic.listOrder = res;
     });
   }
+
 
 }

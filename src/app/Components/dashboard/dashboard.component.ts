@@ -11,7 +11,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class DashboardComponent implements OnInit {
 
-
+  p=1;
   public role! : string
  fullName :string = ""
   public user : any =[]

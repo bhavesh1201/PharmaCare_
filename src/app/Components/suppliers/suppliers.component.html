@@ -31,7 +31,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let z of ServiceSupl.listSupplier">
+    <tr *ngFor="let z of ServiceSupl.listSupplier | paginate : { itemsPerPage: 8, currentPage: p }">
       
       <td>{{z.suppilerName}}</td>
       <td>{{z.email}}</td>
@@ -45,5 +45,6 @@
 
   </tbody>
 </table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 <app-footer></app-footer>

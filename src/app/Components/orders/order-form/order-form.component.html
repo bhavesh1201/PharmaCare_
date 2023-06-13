@@ -1,0 +1,74 @@
+<app-header></app-header>
+<form class="p-3 m-3 frm" autocomplete="off" #orderForm="ngForm"  (ngSubmit)="orderForm.form.valid && submit(orderForm)" >
+
+
+    
+    <div class="border p-3 mt-2">
+        <div class="row pb-2">
+            <h2   class="text-primary text-center"  >
+            Update Order
+            </h2> 
+           
+        </div>
+        <ng-template #noCourses>
+            <h2 class="text-center text-primary">Update Drug</h2>
+          </ng-template>
+
+        
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label>Doctor Name</label>
+                
+                <input name="name" disabled  #name="ngModel" [(ngModel)]="orderServic.DataOrder.userName" type="text" class="form-control" />
+
+            </div>
+            <div class="col-6">
+            <label>Total Price</label>
+            <input name="totelItem" disabled #totelItem="ngModel" [(ngModel)]="orderServic.DataOrder.totalPrice" type="number" class="form-control" />
+        </div>
+        </div>
+
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label> Order Date</label>
+                <input name="exp" disabled #exp="ngModel" [(ngModel)]="orderServic.DataOrder.orderDate" type="date" class="form-control" />
+            </div>
+            <div class="form-check form-switch m-2">
+                <input name="isapp" #isapp="ngModel" [(ngModel)]="orderServic.DataOrder.isApproved" type="checkbox" class="form-check-input" id="customSwitches">
+                <label class="custom-control-label" for="customSwitches">Approve</label>
+              </div>
+
+            <div class="col-6">
+                <label> Payment Mode</label>
+                <input type="text" disabled name="mfg" #mfg="ngModel"  [(ngModel)]="orderServic.DataOrder.payment" class="form-control" />
+            </div>
+            
+           
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 ">
+
+                <input type="submit" class="btn btn-dark form-control" value="Update" />
+
+
+            </div>
+            <div class="col-6 ">
+                <button  type="reset" class="btn btn-outline-secondary form-control">
+                    Reset
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</form>
+<app-footer></app-footer>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Drugs } from 'src/app/models/drug.model';
 import { CartsService } from 'src/app/services/carts.service';
 
@@ -10,7 +11,7 @@ import { CartsService } from 'src/app/services/carts.service';
 export class CartsComponent implements OnInit {
   public products : any = [];
   public grandTotal !: number;
-  constructor(private cartService : CartsService) { }
+  constructor(private cartService : CartsService , public route : Router) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -39,4 +40,10 @@ export class CartsComponent implements OnInit {
 
 
   }
+
+    checkoutBuy(){
+     
+  
+              
+    }
 }

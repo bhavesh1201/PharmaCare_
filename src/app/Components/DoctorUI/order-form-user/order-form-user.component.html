@@ -1,0 +1,97 @@
+<app-header></app-header>
+<form class="p-3 m-3 frm" autocomplete="off" #orderForm="ngForm"  (ngSubmit)="orderForm.form.valid && submit(orderForm)" >
+
+
+    
+    <div class="border p-3 mt-2">
+        <div class="row pb-2">
+            <h2   class="text-primary text-center"  >
+              You are at last step !
+            </h2> 
+            <!-- <input name="quanti" [value]="tp" disabled #quanti="ngModel"  [ngModel]="orderServic.DataOrder.totalPrice" type="number" class="form-control" /> -->
+        </div>
+        <ng-template #noCourses>
+            <h2 class="text-center text-primary">d</h2>
+          </ng-template>
+
+        
+
+        <div class="mb-3 row p-1 ">
+            <div class="col-6">
+                <label>Name</label>
+                
+                <input name="name"   #name="ngModel" [(ngModel)]="orderServic.DataOrder.userName" type="text" class="form-control" />
+
+            </div>
+            <div class="col-6">
+            <label> Street Address</label>
+            <input name="totelItem"  #totelItem="ngModel" [(ngModel)]="orderServic.DataOrder.address" type="text" class="form-control" />
+        </div>
+        </div>
+        <div class="mb-3 row p-1 ">
+          <div class="col-4">
+              <label>State</label>
+              
+              <input  type="text" class="form-control" />
+
+          </div>
+          <div class="col-4">
+            <label>City</label>
+            
+            <input  type="text" class="form-control" />
+
+        </div>
+        <div class="col-4">
+          <label>Pincode</label>
+          
+          <input  type="number" class="form-control" />
+
+      </div>
+         
+      </div>
+
+        <div class="mb-3 row p-1 ">
+            <!-- <div class="col-6">
+                <label> Order Date</label>
+                <input name="exp" disabled #exp="ngModel" [(ngModel)]="orderServic.DataOrder.orderDate" type="date" class="form-control" />
+            </div>
+            <div class="form-check form-switch m-2">
+                <input name="isapp" #isapp="ngModel" [(ngModel)]="orderServic.DataOrder.isApproved" type="checkbox" class="form-check-input" id="customSwitches">
+                <label class="custom-control-label" for="customSwitches">Approve</label>
+              </div> -->
+
+           <label>Select Mode of Payment</label>
+            <select  name="add" #add="ngModel"  [(ngModel)]="orderServic.DataOrder.payment" class="form-select" aria-label="Default select example">
+             
+              <option  value="COD">Cash On Delivery</option>
+              <option  value="EMI">EMI</option>
+              <option  value="Debit Card">Debit Card</option>
+            </select>
+            
+           
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-6 ">
+
+                <input type="submit" class="btn btn-dark form-control" value="Update" />
+
+
+            </div>
+            <div class="col-6 ">
+                <button  type="reset" class="btn btn-outline-secondary form-control">
+                    Reset
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</form>
+<app-footer></app-footer>

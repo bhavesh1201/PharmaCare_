@@ -24,6 +24,10 @@ import { SupplierFormComponent } from './Components/suppliers/supplier-form/supp
 import { DashboardDctComponent } from './Components/DoctorUI/dashboard-dct/dashboard-dct.component';
 import { CartsComponent } from './Components/DoctorUI/carts/carts.component';
 import { ResponsesComponent } from './Components/responses/responses.component';
+import { OrdersComponent } from './Components/orders/orders.component';
+import { OrderFormComponent } from './Components/orders/order-form/order-form.component';
+import { OrderFormUserComponent } from './Components/DoctorUI/order-form-user/order-form-user.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -44,7 +48,10 @@ import { ResponsesComponent } from './Components/responses/responses.component';
     SupplierFormComponent,
     DashboardDctComponent,
     CartsComponent,
-    ResponsesComponent
+    ResponsesComponent,
+    OrdersComponent,
+    OrderFormComponent,
+    OrderFormUserComponent
   
     
   ],
@@ -56,7 +63,8 @@ import { ResponsesComponent } from './Components/responses/responses.component';
     NgToastModule,
     FormsModule,
     SweetAlert2Module.forRoot(),
-    MdbCheckboxModule
+    MdbCheckboxModule,
+    NgxPaginationModule
     
 
    

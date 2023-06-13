@@ -15,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor ="let z of this.feedb.FeedbackList">
+                    <tr *ngFor ="let z of this.feedb.FeedbackList |  paginate : { itemsPerPage: 5, currentPage: p }">
                         <td>{{z.name}}</td>
                         <td><a>
                             <img src="\assets\man.png"></a></td>
@@ -29,6 +29,8 @@
                 </tbody>
                 
             </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
         </div>
 
     </div>
@@ -55,6 +57,5 @@
                 
             </div>
         </div>
-  
 </body>
 <app-footer></app-footer>

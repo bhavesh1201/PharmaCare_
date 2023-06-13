@@ -13,7 +13,7 @@ import { SupplierService } from 'src/app/services/supplier.service';
 })
 export class SuppliersComponent implements OnInit {
 
-
+  p=1;
   constructor(public ServiceSupl : SupplierService , public date : DatePipe){}
   ngOnInit() : void{
  
