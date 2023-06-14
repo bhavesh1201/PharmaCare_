@@ -68,5 +68,10 @@ this.route.navigate(['login'])
       return this.userPayload.role;
     }
   }
+  getEmailFromToken(){
+    if(this.userPayload){
+      return this.userPayload.email;
+    }
+  }
 
 }

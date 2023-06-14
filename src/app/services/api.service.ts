@@ -11,6 +11,7 @@ export class ApiService {
   constructor(private http :HttpClient) { }
 getUsers()
 {
+  console.log('Api service called')
   return this.http.get<any>(`${this.baseUrl}GetAllUser`)
 }
 

@@ -8,6 +8,7 @@ isApproved: boolean;
 address : string
 payment : string
 userName :string;
+email : string
 
 
 }

@@ -16,6 +16,7 @@ import { ResponsesComponent } from './Components/responses/responses.component';
 import { OrdersComponent } from './Components/orders/orders.component';
 import { OrderFormComponent } from './Components/orders/order-form/order-form.component';
 import { OrderFormUserComponent } from './Components/DoctorUI/order-form-user/order-form-user.component';
+import { SalesReportComponent } from './Components/sales-report/sales-report.component';
 
 
 const routes: Routes = [
@@ -33,7 +34,9 @@ const routes: Routes = [
   {path :'order',component:OrdersComponent},
   {path :'orderEdit' , component : OrderFormComponent},
   {path :'orderFormUser' , component : OrderFormUserComponent},
+  {path :'SalesReport',component :SalesReportComponent},
   {path :"" ,component: HomeComponent}
+  
   
   
   

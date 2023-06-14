@@ -1,19 +1,23 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import jsPDF from 'jspdf';
 import { order } from 'src/app/models/order.model';
 import { OrderService } from 'src/app/services/order.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.css']
+  selector: 'app-sales-report',
+  templateUrl: './sales-report.component.html',
+  styleUrls: ['./sales-report.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class SalesReportComponent {
+
+  @ViewChild('cont' , {static : false}) el! : ElementRef;
   p=1;
   constructor(public orderServ : OrderService , private date : DatePipe ){
 
   }
+  
 
   ngOnInit(): void {
     this.orderServ.GetOrder().subscribe(data=>{
@@ -36,6 +40,16 @@ export class OrdersComponent implements OnInit {
   
     }
 
+
+    pdfgen(){
+   let pdf = new jsPDF('p','pt','a4');
+   pdf.html(this.el.nativeElement,{
+    callback:(pdf)=>{
+      pdf.save("SalesReport.pdf");
+    }
+   });
+
+    }
     
     DeleteDrug(id:number){
      
@@ -73,6 +87,5 @@ export class OrdersComponent implements OnInit {
       
   
     }
-
 
 }

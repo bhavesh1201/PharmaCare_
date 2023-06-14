@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<span><button  (click)="pdfgen()" class="btn btn-outline-dark text-end m-3" ><i class="bi bi-file-earmark-arrow-down"></i> Download Pdf</button></span>
+<div class="conten" id="cont" #cont>
+
+    <div class="row pt-4 pb-2 text-center">
+        <div class="col-6 text-primary">
+            <h2>Sales Report </h2>
+
+        </div>
+        <!-- <div class="col-6 text-end">
+            <a  class="btn btn-primary" (click)="populateDrug(orderServ.DataOrder)" [routerLink]="['/drugEdit']">
+                <i class="bi bi-person-add"></i>z
+            </a>
+
+        </div> -->
+    </div>
+
+
+
+
+
+<table class="table table-bordered table-striped cent ">
+
+   
+        <tr>
+            <th>Email</th>
+            <th>Payment</th>
+            
+            <th>TotalPrice</th>
+            <th>Items</th>
+            <th>Date</th>
+           
+            
+        </tr>
+       
+    
+        <tr *ngFor ="let p of orderServ.listOrder  " >
+            <td> {{p.email}}</td>
+            <td> {{p.payment}}</td>
+           
+            <td> {{p.totalPrice}}</td>
+            <td>{{p.totalItems}}</td>
+           
+            <td>{{p.orderDate |date: 'yyyy-MM-dd'}}</td>
+          
+        </tr>
+
+
+    
+
+</table>
+
+
+</div>
+
+<app-footer></app-footer>

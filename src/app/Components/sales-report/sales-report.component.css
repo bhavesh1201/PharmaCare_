@@ -1,0 +1,20 @@
+#cont{
+    width: 595px;
+    height : 842px;
+}
+
+table{
+    max-width: 2400px;
+    width: 100%;
+   
+    
+}
+.cent{
+    margin-left: auto;
+    margin-right: auto;
+}
+table .td{
+    width: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+}

@@ -41,6 +41,8 @@ constructor(private fb : FormBuilder, private auth : AuthService ,
           let tokenPayload = this.auth.decodedToken()
         this.userStore.setFullNameForStore(tokenPayload.unique_name);
         this.userStore.setRoleForStore(tokenPayload.role);
+        this.userStore.setEmailFromStore(tokenPayload.email)
+        console.log(this.userStore.getFullNameFromStore()+'mail at login')
           this.Toast.success({detail:"Success", summary : res.message , duration:3500});
           
           this.loginForm.reset();

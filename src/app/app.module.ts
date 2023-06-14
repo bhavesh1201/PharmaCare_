@@ -8,6 +8,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { SignupComponent } from './Components/signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { NgToastModule } from 'ng-angular-popup' 
 import { TokenInterceptor } from './Interceptor/token.interceptor';
@@ -28,6 +29,7 @@ import { OrdersComponent } from './Components/orders/orders.component';
 import { OrderFormComponent } from './Components/orders/order-form/order-form.component';
 import { OrderFormUserComponent } from './Components/DoctorUI/order-form-user/order-form-user.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SalesReportComponent } from './Components/sales-report/sales-report.component';
 
 
 
@@ -51,7 +53,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ResponsesComponent,
     OrdersComponent,
     OrderFormComponent,
-    OrderFormUserComponent
+    OrderFormUserComponent,
+    SalesReportComponent
   
     
   ],
@@ -70,7 +73,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
    
   ],
   providers: [{
-  provide : HTTP_INTERCEPTORS,
+  provide:HTTP_INTERCEPTORS,
   useClass : TokenInterceptor,
   multi : true
   },

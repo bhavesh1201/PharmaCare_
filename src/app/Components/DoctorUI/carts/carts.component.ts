@@ -11,6 +11,7 @@ import { CartsService } from 'src/app/services/carts.service';
 export class CartsComponent implements OnInit {
   public products : any = [];
   public grandTotal !: number;
+  public totalItem : number;
   constructor(private cartService : CartsService , public route : Router) { }
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class CartsComponent implements OnInit {
     .subscribe(res=>{
       this.products = res;
       this.grandTotal = this.totelPriceCal();
+      this.totalItem = this.totelItemCal()
     })
 
     console.log(this.products);
@@ -38,12 +40,17 @@ export class CartsComponent implements OnInit {
     console.log(tp);
     return tp;
 
+  
+
 
   }
 
-    checkoutBuy(){
-     
-  
-              
-    }
+  totelItemCal():number{
+    let ti =0;
+    this.products.map((a:any)=>{
+      ti++;
+      
+    })
+    return ti;
+  }
 }
